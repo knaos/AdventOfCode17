@@ -31,4 +31,6 @@ for (let line of input) {
   }
 }
 
-console.log(guardsMostSleep);
+let sleepyGuard = Object.entries(guardsMostSleep).reduce((max,curr) => {
+    return max > curr[]
+})
