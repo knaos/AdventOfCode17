@@ -1,7 +1,7 @@
 var fs = require("fs");
 
 let input = fs
-  .readFileSync("./testinput.txt", "utf8")
+  .readFileSync("./input.txt", "utf8")
   .split("\n")
   .sort();
 
@@ -31,6 +31,47 @@ for (let line of input) {
   }
 }
 
-let sleepyGuard = Object.entries(guardsMostSleep).reduce((max,curr) => {
-    return max > curr[]
-})
+// First part
+
+// let sleepyGuardId = null;
+// for (let guard of Object.entries(guardsMostSleep)) {
+//   let id = guard[0];
+//   let time = guard[1];
+
+//   if (!sleepyGuardId || guardsMostSleep[sleepyGuardId] < time) {
+//     sleepyGuardId = id;
+//   }
+// }
+
+// let maxTime = 0;
+// let mostSleepyMinute = null;
+// for (let record of Object.entries(guards[sleepyGuardId])) {
+//   let minute = record[0];
+//   let time = record[1];
+//   if (time > maxTime) {
+//     maxTime = time;
+//     mostSleepyMinute = minute;
+//   }
+// }
+
+// console.log(parseInt(sleepyGuardId) * parseInt(mostSleepyMinute));
+
+// Second part
+let mostSleepPerMinuteGuardId, mostSleptMinute;
+let maxSleepPerMinute = 0;
+
+for (let guard of Object.entries(guards)) {
+  let guardId = guard[0];
+
+  for (let record of Object.entries(guards[guardId])) {
+    let minute = record[0];
+    let timeSlept = record[1];
+    if (timeSlept > maxSleepPerMinute) {
+      mostSleepPerMinuteGuardId = guardId;
+      mostSleptMinute = minute;
+      maxSleepPerMinute = timeSlept;
+    }
+  }
+}
+
+console.log(parseInt(mostSleepPerMinuteGuardId) * parseInt(mostSleptMinute));
