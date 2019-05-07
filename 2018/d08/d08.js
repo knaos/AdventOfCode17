@@ -13,7 +13,6 @@ let node = {
 solve(node);
 
 console.log(calculatePoints(node));
-true;
 
 function solve(n) {
   index = index ? index + 1 : 0;
